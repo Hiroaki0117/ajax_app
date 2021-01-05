@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def create
     Post.create(content: params[:content])
-    redirect_to action: :index
+    redirect_to action: index
   end
 
   def checked
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       post.update(checked: true) #既読でなければ、trueにして既読に変更
     end
 
-    item = Post.find(params[:id]) #更新したレコードを取得
+    item = post.find(params[:id]) #更新したレコードを取得
     render json: { post: item }   #JSON形式でchecked.jsに返却
   end
  
